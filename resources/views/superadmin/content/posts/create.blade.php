@@ -7,7 +7,7 @@
     <form action="{{ route('superadmin.post.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="title" class="form-label">Judul :</label>
+            <label for="title" class="form-label">Judul Postingan :</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Masukan Judul">
         </div>
         <div class="mb-3">
