@@ -1,0 +1,5 @@
+.bg-depan {
+    background-image: url('/gambar/logo.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

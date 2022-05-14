@@ -33,6 +33,9 @@
         .judul{
             text-align: center;
         }
+        .isi{
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -49,19 +52,23 @@
                 <th scope="col">Tanggal Lahir</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Agama</th>
+                <!-- <th scope="col">Gambar</th> -->
                 <th scope="col">Nomor Hp</th>
                 <th scope="col">Alamat</th>
             </tr>
         </thead>
         @php $no = 1; @endphp
         @foreach($anggota as $row)
-        <tr>
+        <tr class="isi">
             <td>{{ $no++ }}</td>
             <td>{{ $row->no_anggota }}</td>
             <td>{{ $row->name }}</td>
             <td>{{ $row->tgl_lahir }}</td>
             <td>{{ $row->jk }}</td>
             <td>{{ $row->agama }}</td>
+            <!-- <td>
+                <img src="{{ asset('/storage'.$row->image) }}" alt="gambar">
+            </td> -->
             <td>{{ $row->no_hp }}</td>
             <td>{{ $row->alamat }}</td>
 

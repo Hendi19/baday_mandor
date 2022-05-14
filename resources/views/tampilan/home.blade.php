@@ -9,20 +9,30 @@
     <title>Baday | Home</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{' assets/css/styles.css' }}" rel="stylesheet" />
+    <link href="{{' assets/css/costum.css' }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <div class="jumbotron jumbotron-fluid text-center bg-depan">
+        <div class="container">
+            <h1 class="display-4"><span class="font-weight-bold">BALA DAYAK MANDOR</span></h1>
+            <hr>
+            <p class="lead font-weight-bold">Sae' Diri' <br>
+                Bala' Dayak</p>
+        </div>
+    </div>
     <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger p-2 fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger p-3 sticky-top">
         <div class="container">
             <img src="" alt="">
             <a class="navbar-brand" href="#!">Bala Dayak</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('user.home.index') }}">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Tentang Kami
@@ -42,22 +52,31 @@
                             <li><a class="dropdown-item" href="#">Vidio</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Page header with logo and tagline-->
-    <div class="jumbotron mt-5">
-        <header class="py-5 bg-light border-bottom mb-4 style=" background-image:url('http://source.unsplash.com/1200x400') ;">
-            <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">Sae Diri?</h1>
-                    <p class="lead mb-0">Bala Dayak</p>
+
+    <div class="col-lg-8 container">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($posts as $a)
+                <div class="carousel-item active">
+                    <img src="{{ asset('storage/' . $a->image) }}" class="d-block w-100" alt="...">
                 </div>
+                @endforeach
             </div>
-        </header>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
+
 
 
     <!-- Page content-->
@@ -65,72 +84,34 @@
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
-                <!-- Featured blog post-->
-                @if( $posts->count())
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="http://source.unsplash.com/1200x400" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2022</div>
-                            <h2 class="card-title">Featured Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
+                <div class="card mb-4">
+                    <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $terbaru[0]->image) }}" alt="{{ asset('storage/' . $terbaru[0]->image) }}" /></a>
+                    <div class="card-body">
+                        <div class="small text-muted">{{ $terbaru[0]->created_at }}</div>
+                        <h2 class="card-title">{{ $terbaru[0]->title }}</h2>
+                        <p class="card-text">{{ $terbaru[0]->excerpt }}</p>
+                        <a class="btn btn-primary" href="#!">Read more →</a>
                     </div>
-                    
-                    <!-- Nested row for non-featured blog posts-->
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="http://source.unsplash.com/1200x400" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="http://source.unsplash.com/1200x400" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                        </div>
+                </div>
 
-
-                        <div class="col-lg-6">
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="http://source.unsplash.com/1200x400" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
-                            </div>
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="http://source.unsplash.com/1200x400" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
-                                </div>
+                <!-- Nested row for non-featured blog posts-->
+                <div class="row">
+                    @foreach($posts as $p)
+                    <div class="col-lg-6">
+                        <div class="card mb-4">
+                            <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $p->image) }}" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted">{{ $p->created_at }}</div>
+                                <h2 class="card-title h4">{{ $p->title }}</h2>
+                                <p class="card-text">{{ $p->excerpt }}</p>
+                                <a class="btn btn-primary" href="#!">Read more →</a>
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
-                @else
-                    <p class="text-center fs-4">No posts found.</p>
-                @endif
-                <!-- Pagination-->
+                </div>
+
                 <nav aria-label="Pagination">
                     <hr class="my-0" />
                     <ul class="pagination justify-content-center my-4">
@@ -188,6 +169,10 @@
         </div>
     </footer>
     <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ '/assets/js/scripts.js' }}"></script>

@@ -98,6 +98,7 @@ class PostController extends Controller
                  Storage::delete($request->oldImage);
              }
              $post['image'] = $request->file('image')->store('post-images');
+             $post['excerpt'] = Str::limit(strip_tags($request->body), 200);
      }
         try {
             $post->update();
