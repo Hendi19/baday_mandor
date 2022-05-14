@@ -19,13 +19,14 @@
             <select name="category_id" id="category_id" class="form-control">
                 <option disabled selected>Pilih Kategori</option>
                 @foreach($category as $row)
-                <option value="{{ $row->id }}">{{ $row->category }}</option>
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="mb-3">
             <label for="img" class="form-label">Gambar :</label>
-            <input type="file" class="form-control" id="img" placeholder="Masukan Judul" name="img">
+            <input class="form-control @error('image') is-invalid @enderror"" type="file" 
+            id="image" name="image" onchange="previewImage()">
         </div>
         <div class="mb-3">
             <label for="body" class="form-label">Body :</label>
@@ -38,20 +39,20 @@
     </form>
 </div>
 <script>
-    // //    ambil titlenya dan id
-    //    const title = document.querySelector('#title');
-    // //ambil slugnya
-    //     const slug = document.querySelector('#slug');
+    //    ambil titlenya dan id
+       const title = document.querySelector('#title');
+    //ambil slugnya
+        const slug = document.querySelector('#slug');
 
-    //     title.addEventListener('change', function(){
-    //         fetch('/superadmin/content/posts/CheckSlug?title='+ title.value)
-    //             .then(response => response.json())
-    //             .then(data => slug.value = data.slug)
-    //     });
-    //         // untuk menghilangkan icon file pada trix editor
-    //     document.addEventListener('trix-file-accept', function(e){
-    //         e.preventDefault();
-    //     })
+        title.addEventListener('change', function(){
+            fetch('/superadmin/content/posts/CheckSlug?title='+ title.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug)
+        });
+            // untuk menghilangkan icon file pada trix editor
+        document.addEventListener('trix-file-accept', function(e){
+            e.preventDefault();
+        })
 
         // fungsi script untuk preview gambar
         function previewImage(){

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-
+use App\Models\Gambar;
+use App\Models\Anggota;
 
 class DatabaseSeeder extends Seeder
 {
@@ -48,7 +49,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-                Post::create([
+        Post::create([
             'title' => 'Judul Pertama',
             'slug' => 'judul-pertama',
             'category_id' => 1,
@@ -64,7 +65,7 @@ class DatabaseSeeder extends Seeder
                         adipisci ad! Quo non fugit ullam rem totam tempora quia culpa natus tenetur officia excepturi,
                         sapiente voluptates reprehenderit necessitatibus deleniti maiores ex accusantium laudantium? Nihil 
                         repellendus obcaecati a nostrum. Nisi, ipsum amet.'
-            
+
         ]);
         Post::create([
             'title' => 'Judul ke Dua',
@@ -82,7 +83,7 @@ class DatabaseSeeder extends Seeder
                         adipisci ad! Quo non fugit ullam rem totam tempora quia culpa natus tenetur officia excepturi,
                         sapiente voluptates reprehenderit necessitatibus deleniti maiores ex accusantium laudantium? Nihil 
                         repellendus obcaecati a nostrum. Nisi, ipsum amet.'
-            
+
         ]);
         Post::create([
             'title' => 'Judul ke Tiga',
@@ -100,9 +101,22 @@ class DatabaseSeeder extends Seeder
                         adipisci ad! Quo non fugit ullam rem totam tempora quia culpa natus tenetur officia excepturi,
                         sapiente voluptates reprehenderit necessitatibus deleniti maiores ex accusantium laudantium? Nihil 
                         repellendus obcaecati a nostrum. Nisi, ipsum amet.'
-            
+
         ]);
 
+        Gambar::create([
+            'image' => 'Mantap.jpg',
+        ]);
 
+        Anggota::create([
+            'name' => 'Hendi',
+            'no_anggota' => 'BD001',
+            'tgl_lahir' => '2001-01-24',
+            'jk' => 'L',
+            'agama' => 'Katolik',
+            'no_hp' => '082144146795',
+            'image' => 'hendi.jpg',
+            'alamat' => 'Desa sekilap, dusun mangke,rt.03'
+        ]);
     }
 }

@@ -16,7 +16,17 @@ class Post extends Model
         'title','slug','excerpt','image','body','category_id'
     ];
 
-    // public function sluggable(): array
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
+
+    // public function author()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
+
+    //  public function sluggable(): array
     // {
     //     return [
     //         'slug' => [

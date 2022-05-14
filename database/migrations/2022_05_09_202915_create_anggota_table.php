@@ -17,13 +17,12 @@ class CreateAnggotaTable extends Migration
             $table->id();
             $table->string('no_anggota')->unique;
             $table->string('name');
-            $table->string('tgl_lahir');
-            $table->string('jk');
-            $table->string('agama');
-            $table->integer('no_hp');
+            $table->date('tgl_lahir');
+            $table->enum('jk', ['P', 'L'])->nullable();
+            $table->enum('agama', ['Katolik', 'Protestan','Islam','Hindu','Buddha','Khonghucu'])->nullable();
+            $table->string('no_hp');
             $table->string('image')->nullable();
             $table->text('alamat');
-            $table->text('excerpt');
             $table->timestamps();
         });
     }

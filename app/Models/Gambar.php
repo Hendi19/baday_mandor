@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Gambar extends Model
 {
-    protected $table = "categories";
+    protected $table = "gambar";
 
     protected $primaryKey = "id";
 
     protected $fillable = [
-        'name','slug'
+        'image'
     ];
 }
